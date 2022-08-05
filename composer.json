@@ -2,6 +2,7 @@
     "name": "pay/pay",
     "description": "2pay php sdk",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Pay\\": "src/"
