@@ -1,0 +1,1 @@
+{"version":1,"defects":{"TwoPay\\two_pay_test::testSecurePay":4,"twoPayCo\\twoPayPhpSdk\\two_pay_test::testSecurePay":4,"Pay\\two_pay_test::testSecurePay":4},"times":{"TwoPay\\two_pay_test::testSecurePay":0.009,"twoPayCo\\twoPayPhpSdk\\two_pay_test::testSecurePay":0.009,"Pay\\two_pay_test::testSecurePay":0.003}}

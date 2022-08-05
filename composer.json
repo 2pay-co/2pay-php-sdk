@@ -1,5 +1,14 @@
 {
     "name": "2pay-co/2pay-php-sdk",
-    "description": "2pay sdk",
-    "require": {}
+    "description": "2pay php sdk",
+    "license": "Copyright (C) 2pay",
+    "autoload": {
+        "psr-4": {
+            "2payCo\\2payPhpSdk\\": "src/"
+        }
+    },
+    "minimum-stability": "beta",
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
