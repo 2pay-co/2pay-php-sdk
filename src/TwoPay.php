@@ -20,20 +20,20 @@ class TwoPay
 
     /**
      * @param SecurePay $pay
-     * @return void
+     * @return bool|string
      */
-    public function SecurePay(SecurePay $pay)
+    public function SecurePay(SecurePay $pay) : bool|string
     {
         $pay->merchantNo = $this->merchant_no;
 
         $array = json_decode(json_encode($pay), true);
         $pay->verifySign = $this->_sign($array);
 
-        $this->post($pay);
-
+        return $this->post($pay);
     }
 
-    private function post (SecurePay $pay) {
+    private function post (SecurePay $pay) : bool|string
+	{
 
         $url = self::Base_URL . self::Secure_Pay;
         $ch = curl_init();
