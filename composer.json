@@ -1,7 +1,7 @@
 {
     "name": "2pay-co/2pay-php-sdk",
     "description": "2pay php sdk",
-    "license": "Copyright (C) 2pay",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "2payCo\\2payPhpSdk\\": "src/"
