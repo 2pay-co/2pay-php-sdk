@@ -33,7 +33,7 @@ class TwoPay
     }
 
 
-	public function Refund( string $order_no, string $amount) {
+	public function Refund(string $order_no, string $amount) {
 
 		$param = ["merchantNo"=> $this->merchant_no, "amount" => $amount, "reference"=> $order_no];
 		$param["verifySign"] = $this->_sign($param);
@@ -43,7 +43,7 @@ class TwoPay
 	}
 
 
-	public function Query( string $order_no) {
+	public function Query(string $order_no) {
 
 		$param = ["merchantNo"=> $this->merchant_no, "reference"=> $order_no];
 		$param["verifySign"] = $this->_sign($param);
