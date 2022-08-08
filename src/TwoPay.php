@@ -28,16 +28,35 @@ class TwoPay
 
         $array = json_decode(json_encode($pay), true);
         $pay->verifySign = $this->_sign($array);
-
-        return $this->post($pay);
+		$param = json_encode($pay,JSON_UNESCAPED_UNICODE);
+        return $this->post($param, self::Secure_Pay);
     }
 
-    private function post (SecurePay $pay) : bool|string
+
+	public function Refund( string $order_no, string $amount) {
+
+		$param = ["merchantNo"=> $this->merchant_no, "amount" => $amount, "reference"=> $order_no];
+		$param["verifySign"] = $this->_sign($param);
+
+		$param = json_encode($param,JSON_UNESCAPED_UNICODE);
+		return $this->post($param, self::Refund);
+	}
+
+
+	public function Query( string $order_no) {
+
+		$param = ["merchantNo"=> $this->merchant_no, "reference"=> $order_no];
+		$param["verifySign"] = $this->_sign($param);
+
+		$param = json_encode($param,JSON_UNESCAPED_UNICODE);
+		return $this->post($param, self::Query);
+	}
+
+    private function post (string $post_data, string $url) : bool|string
 	{
 
-        $url = self::Base_URL . self::Secure_Pay;
+        $url = self::Base_URL . $url;
         $ch = curl_init();
-        $post_data = $data_string = json_encode($pay,JSON_UNESCAPED_UNICODE);
 
         curl_setopt($ch, CURLOPT_URL, $url);
         // post数据
@@ -47,7 +66,7 @@ class TwoPay
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 'Content-Type: application/json',
-                'Content-Length: ' . strlen($data_string))
+                'Content-Length: ' . strlen($post_data))
         );
 
         if (false !== stripos($url, "https://")) { // https处理，不校验相关证书
@@ -66,6 +85,9 @@ class TwoPay
         ksort($pay);
         $sign = '';
         foreach ($pay as $item => $value) {
+			if( $value == "" || $item == "verifySign" ){
+				continue;
+			}
             $sign .= $item . '=' . $value . '&';
         }
 

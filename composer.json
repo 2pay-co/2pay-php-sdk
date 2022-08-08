@@ -14,9 +14,6 @@
             "email": "louis@2pay.co"
         }
     ],
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
-    },
     "require": {
         "ext-curl": "*"
     }
