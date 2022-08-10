@@ -1,6 +1,6 @@
 # 2PAY PHP SDK
 
-[2Pay Online Api
+[2Pay Online Api](https://2pay.gitbook.io/2pay-api-docs-en/notes)
 
 
 ### Requirements
